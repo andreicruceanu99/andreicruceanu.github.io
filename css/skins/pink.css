@@ -1,0 +1,45 @@
+.aside .logo a::before {
+  border-top: 4px solid #ec1839;
+  border-left: 4px solid #ec1839;
+}
+
+.aside .logo a::after {
+  border-bottom: 4px solid #ec1839;
+  border-right: 4px solid #ec1839;
+}
+
+.aside .nav li a:hover,
+.service .service-item .service-item-inner .icon .fa,
+.project .project-item .project-info .icon .fa {
+  color: #ec1839;
+}
+
+.aside .nav li a.active,
+body.dark .aside .nav li a.active,
+body.dark .aside .nav li a:hover,
+.project .project-filter button.active,
+body.dark .project .project-filter button.active,
+.contact .contact-info-item .icon .fa {
+  color: #ec1839;
+}
+
+.aside .nav-toggler span {
+  background-color: #ec1839;
+}
+.aside .nav-toggler span::before,
+.aside .nav-toggler span::after,
+.home .intro .social-links a,
+.section-title h2::before,
+.section-title h2::after,
+.btn-cv,
+.about .about-content .skills .skill-item .progress .progress-in,
+.about .about-content .timeline .timeline-item::before,
+.about .about-content .timeline .circle-dot,
+.service .service-item .service-item-inner:hover .icon {
+  background-color: #ec1839;
+}
+
+body.dark .project .project-filter button.active,
+.project .project-filter button.active {
+  border-color: #ec1839;
+}
