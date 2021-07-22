@@ -58,7 +58,7 @@ window.addEventListener("load", function () {
 
   setTimeout(function () {
     document.querySelector(".preloader").style.display = "none";
-  }, 3000);
+  }, 2000);
 });
 
 //loader
