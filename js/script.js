@@ -1,54 +1,71 @@
-const form = document.getElementById("form-contact");
-const name = document.getElementById("name");
-const email = document.getElementById("email");
-const subject = document.getElementById("subject");
-const message = document.getElementById("message");
-const btnSendForm = document.getElementById("send-form");
+// const form = document.getElementById("form-contact");
+// const name = document.getElementById("name");
+// const email = document.getElementById("email");
+// const subject = document.getElementById("subject");
+// const message = document.getElementById("message");
+// const btnSendForm = document.getElementById("send-form");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  checkInputs();
-});
 
-function checkInputs() {
-  const nameValue = name.value.trim();
-  const emailValue = email.value.trim();
-  const subjectValue = subject.value.trim();
-  const messageValue = message.value.trim();
+function sendEmail() {
 
-  if (nameValue === "") {
-    errorFunction(name);
-  } else {
-    successFunction(name);
-  }
-
-  if (emailValue === "") {
-    errorFunction(email);
-  } else {
-    successFunction(email);
-  }
-
-  if (subjectValue === "") {
-    errorFunction(subject);
-  } else {
-    successFunction(subject);
-  }
-
-  if (messageValue === "") {
-    errorFunction(message);
-  } else {
-    successFunction(message);
-  }
+  Email.send({
+     Host : "smtp.gmail.com",
+     Username : "cruceanuandrei10@gmail.com",
+     Password : "qcbpwvfmivguhqye",
+     To : "cruceanuandrei10@gmail.com",
+     From : document.getElementById("email").value,
+     Subject : document.getElementById("subject").value,
+     
+     Body : "<br> Name: " + document.getElementById("name").value 
+          + "<br> Email: " + document.getElementById("email").value
+          + "<br> Mesaj: " + document.getElementById("message").value
+     
+}).then(
+message => alert(message)
+);
 }
 
-function errorFunction(input) {
-  const formGroup = input.parentElement;
-  formGroup.className = "form-group error";
-}
-function successFunction(input) {
-  const formGroup = input.parentElement;
-  formGroup.className = "form-group success";
-}
+
+
+// function checkInputs() {
+//   const nameValue = name.value.trim();
+//   const emailValue = email.value.trim();
+//   const subjectValue = subject.value.trim();
+//   const messageValue = message.value.trim();
+
+//   if (nameValue === "") {
+//     errorFunction(name);
+//   } else {
+//     successFunction(name);
+//   }
+
+//   if (emailValue === "") {
+//     errorFunction(email);
+//   } else {
+//     successFunction(email);
+//   }
+
+//   if (subjectValue === "") {
+//     errorFunction(subject);
+//   } else {
+//     successFunction(subject);
+//   }
+
+//   if (messageValue === "") {
+//     errorFunction(message);
+//   } else {
+//     successFunction(message);
+//   }
+// }
+
+// function errorFunction(input) {
+//   const formGroup = input.parentElement;
+//   formGroup.className = "form-group error";
+// }
+// function successFunction(input) {
+//   const formGroup = input.parentElement;
+//   formGroup.className = "form-group success";
+// }
 
 //loader
 window.addEventListener("load", function () {
@@ -152,3 +169,5 @@ function asideSectionTogglerBtn() {
   }
 }
 // togglerBtn
+
+
