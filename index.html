@@ -535,7 +535,7 @@
             </div>
             <!-- Contact form -->
             <div class="row">
-              <form action="" id="form-contact" class="contact-form padd-15">
+              <form onsubmit="sendEmail(); reset(); return false;"  id="form-contact" class="contact-form padd-15">
                 <div class="row">
                   <div class="form-item col-6 padd-15">
                     <div class="form-group">
@@ -676,8 +676,9 @@
         Dark
       </label>
     </div>
-
+     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/script.js"></script>
     <script src="js/styleSwitcher.js"></script>
+
   </body>
 </html>
