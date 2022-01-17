@@ -1,71 +1,11 @@
-// const form = document.getElementById("form-contact");
-// const name = document.getElementById("name");
-// const email = document.getElementById("email");
-// const subject = document.getElementById("subject");
-// const message = document.getElementById("message");
-// const btnSendForm = document.getElementById("send-form");
-
-
-function sendEmail() {
-
-  Email.send({
-     Host : "smtp.gmail.com",
-     Username : "cruceanuandrei10@gmail.com",
-     Password : "qcbpwvfmivguhqye",
-     To : "cruceanuandrei10@gmail.com",
-     From : document.getElementById("email").value,
-     Subject : document.getElementById("subject").value,
-     
-     Body : "<br> Name: " + document.getElementById("name").value 
-          + "<br> Email: " + document.getElementById("email").value
-          + "<br> Mesaj: " + document.getElementById("message").value
-     
-}).then(
-message => alert(message)
-);
-}
+ const form = document.getElementById("form-contact");
+ const name = document.getElementById("name");
+ const email = document.getElementById("email");
+ const subject = document.getElementById("subject");
+ const message = document.getElementById("message");
 
 
 
-// function checkInputs() {
-//   const nameValue = name.value.trim();
-//   const emailValue = email.value.trim();
-//   const subjectValue = subject.value.trim();
-//   const messageValue = message.value.trim();
-
-//   if (nameValue === "") {
-//     errorFunction(name);
-//   } else {
-//     successFunction(name);
-//   }
-
-//   if (emailValue === "") {
-//     errorFunction(email);
-//   } else {
-//     successFunction(email);
-//   }
-
-//   if (subjectValue === "") {
-//     errorFunction(subject);
-//   } else {
-//     successFunction(subject);
-//   }
-
-//   if (messageValue === "") {
-//     errorFunction(message);
-//   } else {
-//     successFunction(message);
-//   }
-// }
-
-// function errorFunction(input) {
-//   const formGroup = input.parentElement;
-//   formGroup.className = "form-group error";
-// }
-// function successFunction(input) {
-//   const formGroup = input.parentElement;
-//   formGroup.className = "form-group success";
-// }
 
 //loader
 window.addEventListener("load", function () {
@@ -79,6 +19,9 @@ window.addEventListener("load", function () {
 });
 
 //loader
+
+
+
 
 // project filter
 
@@ -171,3 +114,141 @@ function asideSectionTogglerBtn() {
 // togglerBtn
 
 
+
+
+
+form.addEventListener('submit' , (e) => {
+  
+  checkInputs() ; 
+  
+  if (isFormvalid()==true) {
+    sendEmail() ;
+    
+    name.value = "";
+    email.value = "";
+    message.value = "";
+    subject.value = '';
+    const inputContains = form.querySelectorAll('.form-group');
+    inputContains.forEach(function(element) {
+         element.classList.remove('success');
+    })  
+
+    
+
+  } else {
+    
+    e.preventDefault();
+  }
+ 
+
+
+});
+
+
+function isFormvalid() {
+  
+  const inputContains = form.querySelectorAll('.form-group');
+  let result = true ; 
+  inputContains.forEach((container) => {
+   
+     if(container.classList.contains('error')) {
+       result = false ;
+     }
+
+  });
+     return result ; 
+}
+
+function checkInputs() {
+  const nameValue = name.value.trim();
+  const emailValue = email.value.trim();
+  const subjectValue = subject.value.trim();
+  const messageValue = message.value.trim();
+
+
+
+  if (nameValue == "") {
+    errorFunction(name , name , "Introdu nume" );
+    
+  } else {
+    successFunction(name);
+  }
+
+  if (emailValue == "") {
+    errorFunction(email , email , "Itrodu email");
+   
+  } else {
+    successFunction(email);
+ }
+
+  if (subjectValue == "") {
+  errorFunction(subject , subject , "Introdu subiect");
+  
+  } else {
+    successFunction(subject);
+  }
+
+ if (messageValue == "") {
+    errorFunction(message , message , "Introdu mesaj");
+   
+  } else {
+    successFunction(message);
+  }
+}
+
+
+
+function errorFunction(input , element , errorMessage) {
+ const formGroup = input.parentElement;
+ formGroup.className = "form-group error";
+ const parent = element.parentElement;
+ 
+  const paragraph = parent.querySelector('p');
+  paragraph.textContent = errorMessage;
+}
+function successFunction(input) {
+  const formGroup = input.parentElement;
+  formGroup.className = "form-group success";
+}
+
+function sendEmail() {
+
+  Email.send({
+     Host : "smtp.gmail.com",
+     Username : "cruceanuandrei10@gmail.com",
+     Password : "qcbpwvfmivguhqye",
+     To : "cruceanuandrei10@gmail.com",
+     From : document.getElementById("email").value,
+     Subject : document.getElementById("subject").value,
+     
+     Body : "<br> Name: " + document.getElementById("name").value 
+          + "<br> Email: " + document.getElementById("email").value
+          + "<br> Mesaj: " + document.getElementById("message").value
+     
+    
+
+}).then(
+function (message) {
+  if (message == "OK") {
+   successMessageServer();
+  } else {
+    errorMessageServer()
+  }
+}
+)
+;
+}
+
+function successMessageServer() {
+   const messageElement = document.querySelector("#messageElement");
+   messageElement.style.color = "#2ecc71";
+   messageElement.textContent = "Mesaj trimis cu succes !"
+   messageElement.style.display = "block";
+}
+
+function errorMessageServer() {
+  const messageElement = document.querySelector("#messageElement");
+  messageElement.style.color = "red";
+  messageElement.textContent = "Mesajul nu a fost trimis , Eroare server !";
+  messageElement.style.display = "block";
+}
