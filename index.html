@@ -535,7 +535,7 @@
             </div>
             <!-- Contact form -->
             <div class="row">
-              <form onsubmit="sendEmail(); reset(); return false;"  id="form-contact" class="contact-form padd-15">
+              <form id="form-contact" class="contact-form padd-15">
                 <div class="row">
                   <div class="form-item col-6 padd-15">
                     <div class="form-group">
@@ -545,6 +545,7 @@
                         class="form-control"
                         placeholder="Name*"
                       />
+                      <p>Error message</p>
                       <div class="icon-validation">
                         <i class="fa fa-check-circle"></i>
                         <i class="fa fa-exclamation-circle"></i>
@@ -559,6 +560,7 @@
                         class="form-control"
                         placeholder="Email*"
                       />
+                      <p>Error message</p>
                       <div class="icon-validation">
                         <i class="fa fa-check-circle"></i>
                         <i class="fa fa-exclamation-circle"></i>
@@ -575,6 +577,7 @@
                         class="form-control"
                         placeholder="Subject"
                       />
+                      <p>Error message</p>
                       <div class="icon-validation">
                         <i class="fa fa-check-circle"></i>
                         <i class="fa fa-exclamation-circle"></i>
@@ -590,6 +593,7 @@
                         class="form-control"
                         placeholder="Your Message..."
                       ></textarea>
+                      <p>Error message</p>
                       <div class="icon-validation">
                         <i class="fa fa-check-circle"></i>
                         <i class="fa fa-exclamation-circle"></i>
@@ -598,9 +602,12 @@
                   </div>
                 </div>
                 <div class="row">
-                  <button type="submit" id="send-form" class="btn-cv">
+                  <button  type="submit" id="send-form" class="btn-cv">
                     Send Message
                   </button>
+                </div>
+                <div class="mesaj-server">
+                   <p id="messageElement">Mesaj server</p>
                 </div>
               </form>
             </div>
