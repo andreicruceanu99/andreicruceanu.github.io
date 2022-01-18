@@ -127,11 +127,8 @@ form.addEventListener('submit' , (e) => {
     name.value = "";
     email.value = "";
     message.value = "";
-    subject.value = '';
-    const inputContains = form.querySelectorAll('.form-group');
-    inputContains.forEach(function(element) {
-         element.classList.remove('success');
-    })  
+    subject.value = "";
+ 
 
     
 
@@ -243,12 +240,12 @@ function successMessageServer() {
    const messageElement = document.querySelector("#messageElement");
    messageElement.style.color = "#2ecc71";
    messageElement.textContent = "Mesaj trimis cu succes !"
-   messageElement.style.display = "block";
+   messageElement.style.visibility = "visible";
 }
 
 function errorMessageServer() {
   const messageElement = document.querySelector("#messageElement");
   messageElement.style.color = "red";
   messageElement.textContent = "Mesajul nu a fost trimis , Eroare server !";
-  messageElement.style.display = "block";
+  messageElement.style.visibility = "visible";
 }
