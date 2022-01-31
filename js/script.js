@@ -118,12 +118,13 @@ function asideSectionTogglerBtn() {
 
 
 form.addEventListener('submit' , (e) => {
-  
+  e.preventDefault();
   checkInputs() ; 
   
   if (isFormvalid()==true) {
     sendEmail() ;
-    
+ 
+    deleteSucces()
     name.value = "";
     email.value = "";
     message.value = "";
@@ -140,6 +141,16 @@ form.addEventListener('submit' , (e) => {
 
 
 });
+
+
+function deleteSucces() {
+  const inputContains = form.querySelectorAll('.form-group');
+ 
+  inputContains.forEach((container) => {
+    container.classList.remove("success");
+  })
+
+}
 
 
 function isFormvalid() {
@@ -241,6 +252,10 @@ function successMessageServer() {
    messageElement.style.color = "#2ecc71";
    messageElement.textContent = "Mesaj trimis cu succes !"
    messageElement.style.visibility = "visible";
+   setTimeout(function() {
+    messageElement.style.visibility = 'hidden'
+  }, 6000) 
+
 }
 
 function errorMessageServer() {
@@ -248,4 +263,9 @@ function errorMessageServer() {
   messageElement.style.color = "red";
   messageElement.textContent = "Mesajul nu a fost trimis , Eroare server !";
   messageElement.style.visibility = "visible";
+
+  setTimeout(function() {
+    messageElement.style.visibility = 'hidden'
+  }, 6000) 
+
 }
